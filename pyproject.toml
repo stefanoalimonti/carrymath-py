@@ -1,0 +1,39 @@
+[build-system]
+requires = ["setuptools>=68.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "carrymath"
+version = "0.1.0"
+description = "Carry arithmetic framework for positional multiplication analysis"
+readme = "README.md"
+license = {text = "MIT"}
+requires-python = ">=3.8"
+authors = [{name = "Stefano Alimonti"}]
+keywords = ["carries", "multiplication", "number theory", "spectral theory", "covariance"]
+
+dependencies = [
+    "numpy>=1.20",
+]
+
+[project.optional-dependencies]
+exact = ["mpmath>=1.2"]
+dev = ["pytest>=7.0", "scipy>=1.7"]
+all = ["mpmath>=1.2", "pytest>=7.0", "scipy>=1.7"]
+
+[tool.setuptools.packages.find]
+include = ["carrymath*"]
+
+[tool.ruff]
+target-version = "py38"
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I"]
+ignore = ["E501"]
+
+[tool.ruff.lint.per-file-ignores]
+"__init__.py" = ["F401"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
